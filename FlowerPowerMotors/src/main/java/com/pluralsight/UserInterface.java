@@ -1,5 +1,10 @@
 package com.pluralsight;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface
@@ -135,7 +140,73 @@ public class UserInterface
 
     public void processAddVehicleRequest()
     {
+        System.out.println();
+        System.out.println("-".repeat(65));
+        System.out.println("                         ➕ Add Vehicle");
+        System.out.println("-".repeat(65));
+        System.out.println();
+        System.out.println("Enter two digit ID number: ");
+        int twoDigitIdNumber = Integer.parseInt(userInput.nextLine()); // prompt user for id number
+        System.out.println("Enter vehicle Year in this format (YYYY): ");
+        int year = Integer.parseInt(userInput.nextLine()); // prompt the user to enter year
+        System.out.println("Enter vehicle Make: ");
+        String make = userInput.nextLine(); // prompt the user to enter the make
+        System.out.println("Enter the vehicle Model: ");
+        String model = userInput.nextLine(); // prompt the user to enter the model
+        System.out.println("Enter the vehicle Color: ");
+        String color = userInput.nextLine(); // prompt the user to enter the color
+        System.out.println("Enter the vehicle Price (type a $ sign, followed by the price): ");
+        String price = userInput.nextLine(); // prompt the user to enter the price
+        System.out.println();
 
+        // format the users provided information
+        String addedVehicleInformation = twoDigitIdNumber + "|" + year + "|" + make + "|" + model + "|" + color + "|" + price;
+
+        // save the added information into the csv file
+        File file = new File("file/inventory.csv");
+
+        try (FileWriter fileWriter = new FileWriter(file, true);
+             PrintWriter writer = new PrintWriter(fileWriter);
+        ){
+            writer.println(addedVehicleInformation); // write the added information to the file
+            writer.flush();
+            System.out.println("New vehicle added successfully! ✨ ");
+        } catch (IOException ex) {
+            System.out.println("An error has occurred. New vehicle was not added. ");
+            ex.printStackTrace();
+        }
+
+        // prompt user to make their next move with the following options
+        System.out.println();
+        System.out.println("What do you want to do next " + userName + "?");
+        System.out.println();
+        System.out.println("A - Add another Vehicle");
+        System.out.println("B - Return to Menu Screen");
+        System.out.println("C - Exit the Application");
+        System.out.println();
+        System.out.println("Enter your choice below: ");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+
+        // process the users choice
+        switch (choice.toUpperCase())
+        {
+            case "A":
+                processAddVehicleRequest();
+                break;
+            case "B":
+                display();
+                break;
+            case "C":
+                System.out.println();
+                System.out.println("Goodbye for now " + userName + "!");
+                System.out.println("👋");
+                System.exit(1);
+            default:
+                System.out.println();
+                System.out.println("An error has occurred while retrieving selection. ");
+                break;
+        }
     }
 
     public void processRemoveVehicleRequest()

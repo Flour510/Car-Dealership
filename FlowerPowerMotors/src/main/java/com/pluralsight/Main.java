@@ -13,21 +13,6 @@ public class Main
         userInterface.greeting(); // activate the greeting class by calling it here
         userInterface.display(); // activate the user interface class by calling it here
 
-     // System.out.println();
-     // System.out.println("                        Current Inventory ");
-     // System.out.println("_".repeat(65));
-     //
-     // // creates an instance of dealership file manager
-     // DealershipFileManager dealershipFileManager = new DealershipFileManager();
-     //
-     // // gets the dealership object
-     // Dealership dealership = dealershipFileManager.getDealership();
-     //
-     // // print information about the dealership by using a loop
-     // for (Vehicle vehicle : dealership.getAllVehicles())
-     // {
-     //     System.out.println(vehicle);
-     // }
-
     }
 }
+

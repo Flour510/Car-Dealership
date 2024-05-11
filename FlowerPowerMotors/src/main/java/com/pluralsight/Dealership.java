@@ -44,10 +44,6 @@ public class Dealership
         return null;
     }
 
-    public Vehicle searchByMake(String make) {
-        return null;
-    }
-
     public Vehicle searchByModel(String model) {
         return null;
     }

@@ -30,6 +30,7 @@ public class DealershipFileManager
                 String line = fileScanner.nextLine();
                 String[] fields = line.split("\\|"); // split on the pipe
 
+                int id = Integer.parseInt(fields[0].trim());
                 int year = Integer.parseInt(fields[1].trim());
                 String make = fields[2];
                 String model = fields[3];
@@ -37,7 +38,7 @@ public class DealershipFileManager
                 double price = Double.parseDouble(fields[5].replace("$", "").replace(",", "").trim());
 
                 // create vehicle object and add it to inventory
-                Vehicle vehicle = new Vehicle(year, make, model, color, price);
+                Vehicle vehicle = new Vehicle(id, year, make, model, color, price);
                 inventory.add(vehicle);
 
                 System.out.println(line); // prints out the inventory csv file list
