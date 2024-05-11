@@ -9,7 +9,7 @@ public class Dealership
     private String name;
     private String location;
     private String phoneNumber;
-    private List<Vehicle> vehicles;
+    private List<Vehicle> vehicles = new ArrayList<>(); // instantiate the array list vehicle
 
     // constructor
     public Dealership(String name, String location, String phoneNumber)
@@ -18,6 +18,11 @@ public class Dealership
         this.location = location;
         this.phoneNumber = phoneNumber;
         this.vehicles = new ArrayList<>(); // instantiate the array list vehicle
+    }
+
+    // do i need this?
+    public Dealership() {
+
     }
 
     // methods
