@@ -1,42 +1,32 @@
 package com.pluralsight;
 
-// imports
-import java.util.Scanner;
+/*
+The main class should be where you call all of your classes
+*/
 
-public class Main {
-    static Scanner userInput = new Scanner(System.in);
-    static String userName;
-
+public class Main
+{
     public static void main(String[] args)
     {
-        // prompt the user for their first name for a more personalized experience
-        System.out.println();
-        System.out.println("Enter your first name: ");
-        userName = userInput.nextLine().trim().toUpperCase();
-        System.out.println();
+        UserInterface userInterface = new UserInterface(); // instantiate UI class
+        userInterface.personalize(); // activate the personalize class by calling it here
+        userInterface.display(); // activate the user interface class by calling it here
 
-        // greet the user
-        System.out.println("_".repeat(65));
-        System.out.println("                            Hi, " + userName + " \uD83D\uDC4B");
-        System.out.println("              Welcome to \uD83C\uDF38 Flower Power Motors! \uD83D\uDE99\uD83D\uDCA8");
-        System.out.println("Where we specialize exclusively in Volkswagen Beetle Inventory ✨ ");
-        System.out.println("_".repeat(65));
-
-        System.out.println();
-        System.out.println("                        Current Inventory ");
-        System.out.println("_".repeat(65));
-
-        // creates an instance of dealership file manager
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
-
-        // gets the dealership object
-        Dealership dealership = dealershipFileManager.getDealership();
-
-        // print information about the dealership by using a loop
-        for (Vehicle vehicle : dealership.getAllVehicles())
-        {
-            System.out.println(vehicle);
-        }
+     // System.out.println();
+     // System.out.println("                        Current Inventory ");
+     // System.out.println("_".repeat(65));
+     //
+     // // creates an instance of dealership file manager
+     // DealershipFileManager dealershipFileManager = new DealershipFileManager();
+     //
+     // // gets the dealership object
+     // Dealership dealership = dealershipFileManager.getDealership();
+     //
+     // // print information about the dealership by using a loop
+     // for (Vehicle vehicle : dealership.getAllVehicles())
+     // {
+     //     System.out.println(vehicle);
+     // }
 
     }
 }
