@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
+// imports
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class DealershipFileManager
                 Vehicle vehicle = new Vehicle(year, make, model, color, price);
                 inventory.add(vehicle);
 
-                System.out.println(line); // do i need this?
+                System.out.println(line); // prints out the inventory csv file list
             }
         }
         catch(FileNotFoundException ex)

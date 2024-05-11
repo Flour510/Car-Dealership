@@ -20,7 +20,6 @@ public class Dealership
         this.vehicles = new ArrayList<>(); // instantiate the array list vehicle
     }
 
-    // do i need this?
     public Dealership() {
 
     }
