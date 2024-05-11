@@ -18,31 +18,33 @@ public class UserInterface
 
     public static void personalize()
     {
-        UserInterface userInterface = new UserInterface();
-
         // prompt the user for their first name for a more personalized experience
         System.out.println();
         System.out.println("Enter your first name: ");
         userName = userInput.nextLine().trim().toUpperCase();
         System.out.println();
+    }
 
+    // method to display greeting
+    public static void greeting()
+    {
+        // greet the user
+        System.out.println("_".repeat(65));
+        System.out.println();
+        System.out.println("                           Hi, " + userName + " \uD83D\uDC4B");
+        System.out.println("              Welcome to \uD83C\uDF38 Flower Power Motors! \uD83D\uDE99\uD83D\uDCA8");
+        System.out.println("Where we specialize exclusively in Volkswagen Beetle Inventory ✨ ");
+
+        UserInterface userInterface = new UserInterface();
         userInterface.display();
     }
 
-    // method to display welcome message or menu
+    // method to display menu
     public void display() {
 
         do {
-
-            // greet the user
-            System.out.println("_".repeat(65));
-            System.out.println();
-            System.out.println("                            Hi, " + userName + " \uD83D\uDC4B");
-            System.out.println("              Welcome to \uD83C\uDF38 Flower Power Motors! \uD83D\uDE99\uD83D\uDCA8");
-            System.out.println("Where we specialize exclusively in Volkswagen Beetle Inventory ✨ ");
-            System.out.println("_".repeat(65));
-
             // print the menu screen
+            System.out.println("_".repeat(65));
             System.out.println();
             System.out.println("                             \uD83D\uDD0D \uD83D\uDE97 ");
             System.out.println("                              Menu");
@@ -50,10 +52,10 @@ public class UserInterface
             System.out.println();
             System.out.println("What do you want to do " + userName + "?");
             System.out.println();
-            System.out.println("1 - List All Available Vehicles");
-            System.out.println("2 - Add A Vehicle To The Inventory");
-            System.out.println("3 - Remove A Vehicle From The Inventory");
-            System.out.println("4 - Exit The Application");
+            System.out.println("1 - List all Available Vehicles");
+            System.out.println("2 - Add a Vehicle to the Inventory");
+            System.out.println("3 - Remove a Vehicle from the Inventory");
+            System.out.println("4 - Exit the Application");
             System.out.println();
             System.out.println("Make a selection below: ");
             choice = Integer.parseInt(userInput.nextLine().trim());
@@ -80,7 +82,6 @@ public class UserInterface
                     return;
             }
         } while (choice != 4);
-
       }
 
     public void processGetAllVehiclesRequest()
@@ -103,6 +104,33 @@ public class UserInterface
              System.out.println(vehicle);
          }
 
+         // prompt user to make their next move with the following options
+        System.out.println();
+        System.out.println("What do you want to do next " + userName + "?");
+        System.out.println();
+        System.out.println("A - Return to Menu Screen");
+        System.out.println("B - Exit the Application");
+        System.out.println();
+        System.out.println("Enter your choice below: ");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+
+        // process the users choice
+        switch (choice.toUpperCase())
+        {
+            case "A":
+                display();
+                break;
+            case "B":
+                System.out.println();
+                System.out.println("Goodbye for now " + userName + "!");
+                System.out.println("👋");
+                System.exit(1);
+            default:
+                System.out.println();
+                System.out.println("An error has occurred while retrieving selection. ");
+                break;
+        }
     }
 
     public void processAddVehicleRequest()
