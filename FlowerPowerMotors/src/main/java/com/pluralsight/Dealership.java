@@ -9,7 +9,7 @@ public class Dealership
     private String name;
     private String location;
     private String phoneNumber;
-    private List<Vehicle> vehicles = new ArrayList<>(); // instantiate the array list vehicle
+    private ArrayList<Vehicle> vehicles; // instantiate the array list vehicle
 
     // constructor
     public Dealership(String name, String location, String phoneNumber)
@@ -24,6 +24,34 @@ public class Dealership
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setVehicles(ArrayList<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
     // methods
     public void addVehicle(Vehicle vehicle)
     {
@@ -35,9 +63,9 @@ public class Dealership
         return vehicles;
     }
 
-    public void removeVehicle()
+    public void removeVehicle(Vehicle vehicle)
     {
-
+        vehicles.remove(vehicle);
     }
 
     public Vehicle searchByYear(int year) {

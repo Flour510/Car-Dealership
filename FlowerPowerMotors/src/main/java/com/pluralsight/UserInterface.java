@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface
@@ -12,6 +12,10 @@ public class UserInterface
     static Scanner userInput = new Scanner(System.in);
     static String userName;
     static int choice = 0;
+
+    public DealershipFileManager dealershipFileManager;
+
+    public Vehicle vehicle;
 
     private Dealership dealership;
 
@@ -46,6 +50,8 @@ public class UserInterface
 
     // method to display menu
     public void display() {
+
+        init();
 
         do {
             // print the menu screen
@@ -156,25 +162,12 @@ public class UserInterface
         System.out.println("Enter the vehicle Color: ");
         String color = userInput.nextLine(); // prompt the user to enter the color
         System.out.println("Enter the vehicle Price (type a $ sign, followed by the price): ");
-        String price = userInput.nextLine(); // prompt the user to enter the price
+        double price = Double.parseDouble(userInput.nextLine()); // prompt the user to enter the price
         System.out.println();
 
-        // format the users provided information
-        String addedVehicleInformation = twoDigitIdNumber + "|" + year + "|" + make + "|" + model + "|" + color + "|" + price;
-
-        // save the added information into the csv file
-        File file = new File("file/inventory.csv");
-
-        try (FileWriter fileWriter = new FileWriter(file, true);
-             PrintWriter writer = new PrintWriter(fileWriter);
-        ){
-            writer.println(addedVehicleInformation); // write the added information to the file
-            writer.flush();
-            System.out.println("New vehicle added successfully! ✨ ");
-        } catch (IOException ex) {
-            System.out.println("An error has occurred. New vehicle was not added. ");
-            ex.printStackTrace();
-        }
+        vehicle = new Vehicle(twoDigitIdNumber, year, make, model, color, price);
+        dealership.addVehicle(vehicle);
+        dealershipFileManager.saveDealership(dealership);
 
         // prompt user to make their next move with the following options
         System.out.println();
@@ -211,7 +204,41 @@ public class UserInterface
 
     public void processRemoveVehicleRequest()
     {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Enter the one or two digit ID number of the vehicle you want to remove: ");
+        int twoDigitIdNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        // find the index of the vehicle with the specified ID
+        boolean indexToRemove = false;
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getId() == twoDigitIdNumber) {
+                dealership.removeVehicle(vehicle);
+                indexToRemove = true;
+                break;
+            }
+        }
+
+        // if the vehicle with the specified ID was found, remove it from the array and update the CSV file
+        if (indexToRemove) {
+            try {
+                dealershipFileManager.saveDealership(dealership);
+
+                System.out.println("Car removed successfully!");
+            } catch (Exception ex) {
+                System.out.println("An error occurred while removing the vehicle from the CSV file.");
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("Vehicle with the specified ID was not found.");
+        }
+    }
+
+    private void init()
+    {
+        dealershipFileManager = new DealershipFileManager();
+        this.dealership = dealershipFileManager.getDealership();
     }
 
     public void processGetByPriceRequest()

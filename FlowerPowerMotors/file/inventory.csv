@@ -1,29 +1,25 @@
 Flower Power Motors|444 Bug Blvd|510-444-4444
-Id|Year|Make|Model|Color|Price
-1|1980|Volkswagen|Original Beetle|Red|$16,800
-2|1982|Volkswagen|Original Beetle|Blue|$13,600
-3|1985|Volkswagen|Original Beetle|Green|$11,600
-4|1989|Volkswagen|Original Beetle|White|$9,200
-5|1995|Volkswagen|Original Beetle|Green|$15,800
-6|1999|Volkswagen|New Beetle|White|$2,800
-7|2001|Volkswagen|New Beetle|Blue|$4,500
-8|2003|Volkswagen|New Beetle|Orange|$5,500
-9|2005|Volkswagen|New Beetle|Yellow|$6,200
-10|2006|Volkswagen|New Beetle|Red|$6,000
-11|2007|Volkswagen|New Beetle|White|$7,200
-12|2008|Volkswagen|New Beetle|Pink|$8,800
-13|2009|Volkswagen|New Beetle|Purple|$9,400
-14|2010|Volkswagen|New Beetle|Yellow|$10,200
-15|2013|Volkswagen|Beetle|Orange|$11,900
-16|2014|Volkswagen|Beetle|Pink|$10,200
-17|2015|Volkswagen|Beetle|Purple|$9,900
-18|2016|Volkswagen|Beetle|Red|$13,200
-19|2017|Volkswagen|Beetle|Pink|$15,300
-20|2018|Volkswagen|Beetle|Black|$18,700
-22|2020|Volkswagen|Beetle|Sky Blue|$30,000
-21|2019|Volkswagen|Beetle|Sky Blue|$22,000
-23|2022|Volkswagen|Beetle|Blue|$20,000
-24|2029|Volkswagen|Flying Beetle|Silver|$90,000
-33|3000|Volkswagen|Flying Beetle|Gold|$100,000
-22|2091|Volkswagen |Flying Beetle|Purple|$10,000
-44|1999|Volkswagen|Original Beetle|Lime|$30,000
+3|1985|Volkswagen|Original Beetle|Green|11600.0
+4|1989|Volkswagen|Original Beetle|White|9200.0
+5|1995|Volkswagen|Original Beetle|Green|15800.0
+6|1999|Volkswagen|New Beetle|White|2800.0
+7|2001|Volkswagen|New Beetle|Blue|4500.0
+8|2003|Volkswagen|New Beetle|Orange|5500.0
+9|2005|Volkswagen|New Beetle|Yellow|6200.0
+10|2006|Volkswagen|New Beetle|Red|6000.0
+11|2007|Volkswagen|New Beetle|White|7200.0
+12|2008|Volkswagen|New Beetle|Pink|8800.0
+13|2009|Volkswagen|New Beetle|Purple|9400.0
+14|2010|Volkswagen|New Beetle|Yellow|10200.0
+15|2013|Volkswagen|Beetle|Orange|11900.0
+16|2014|Volkswagen|Beetle|Pink|10200.0
+17|2015|Volkswagen|Beetle|Purple|9900.0
+18|2016|Volkswagen|Beetle|Red|13200.0
+19|2017|Volkswagen|Beetle|Pink|15300.0
+20|2018|Volkswagen|Beetle|Black|18700.0
+22|2020|Volkswagen|Beetle|Sky Blue|30000.0
+21|2019|Volkswagen|Beetle|Sky Blue|22000.0
+23|2022|Volkswagen|Beetle|Blue|20000.0
+24|2029|Volkswagen|Flying Beetle|Silver|90000.0
+40|2035|Volkswagen|Flying Beetle|Red|500000.0
+23|2033|Volkswagen|Flying Beetle|Pink|300000.0

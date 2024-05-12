@@ -3,6 +3,8 @@ package com.pluralsight;
 // imports
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,14 +17,18 @@ public class DealershipFileManager
         String filePath = "file/inventory.csv";
 
         // dealership object
-        Dealership dealership = new Dealership();
+        Dealership dealership = null;
         List<Vehicle> inventory = new ArrayList<>(); // populate the inventory with a list of vehicles
 
         // read the file and populate the inventory
         try(Scanner fileScanner = new Scanner(new File(filePath)))
         {
-            fileScanner.nextLine(); // skips the first line
-            fileScanner.nextLine(); // skips the second line
+            String dealershipLine = fileScanner.nextLine();
+            String[] dealerInfo = dealershipLine.split("\\|");
+            String name = dealerInfo[0]; // only does this once
+            String addLocation = dealerInfo[1];
+            String phoneNumber = dealerInfo[2];
+            dealership = new Dealership(name, addLocation, phoneNumber);
 
             // read the contents of the file
             while(fileScanner.hasNextLine())
@@ -39,9 +45,9 @@ public class DealershipFileManager
 
                 // create vehicle object and add it to inventory
                 Vehicle vehicle = new Vehicle(id, year, make, model, color, price);
-                inventory.add(vehicle);
+                dealership.addVehicle(vehicle);
 
-                System.out.println(line); // prints out the inventory csv file list
+                //System.out.println(line); // prints out the inventory csv file list
             }
         }
         catch(FileNotFoundException ex)
@@ -51,8 +57,21 @@ public class DealershipFileManager
         return dealership;
     }
 
-    public Dealership saveDealership()
+    public void saveDealership(Dealership dealership)
     {
-        return null;
+        File file = new File("file/inventory.csv");
+
+        try (FileWriter fileWriter = new FileWriter(file))
+        {
+            fileWriter.write(dealership.getName() + "|" + dealership.getLocation() + "|" + dealership.getPhoneNumber() + "\n");
+            for (Vehicle vehicle : dealership.getAllVehicles())
+            {
+                fileWriter.write(vehicle.getId() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|" + vehicle.getModel() + "|" + vehicle.getColor() + "|" + vehicle.getPrice() + "\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error. ");
+        }
     }
 }
