@@ -98,10 +98,10 @@ public class UserInterface
     public void processGetAllVehiclesRequest()
     {
          System.out.println();
-         System.out.println("_".repeat(65));
+         System.out.println("_".repeat(90));
          System.out.println();
-         System.out.println("                     \uD83D\uDE99 Current Inventory \uD83D\uDE97 ");
-         System.out.println("_".repeat(65));
+         System.out.println("                               \uD83D\uDE99 Current Inventory \uD83D\uDE97 ");
+         System.out.println("_".repeat(90));
 
          // creates an instance of dealership file manager
          DealershipFileManager dealershipFileManager = new DealershipFileManager();
@@ -148,7 +148,9 @@ public class UserInterface
     {
         System.out.println();
         System.out.println("-".repeat(65));
+        System.out.println();
         System.out.println("                         ➕ Add Vehicle");
+        System.out.println();
         System.out.println("-".repeat(65));
         System.out.println();
         System.out.println("Enter two digit ID number: ");
@@ -161,13 +163,14 @@ public class UserInterface
         String model = userInput.nextLine(); // prompt the user to enter the model
         System.out.println("Enter the vehicle Color: ");
         String color = userInput.nextLine(); // prompt the user to enter the color
-        System.out.println("Enter the vehicle Price (type a $ sign, followed by the price): ");
+        System.out.println("Enter the vehicle Price (Do not type a $ sign or a comma): ");
         double price = Double.parseDouble(userInput.nextLine()); // prompt the user to enter the price
         System.out.println();
 
         vehicle = new Vehicle(twoDigitIdNumber, year, make, model, color, price);
         dealership.addVehicle(vehicle);
         dealershipFileManager.saveDealership(dealership);
+        System.out.println("Car has been added successfully! ✨ ");
 
         // prompt user to make their next move with the following options
         System.out.println();
@@ -178,6 +181,7 @@ public class UserInterface
         System.out.println("C - Exit the Application");
         System.out.println();
         System.out.println("Enter your choice below: ");
+        System.out.println();
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
 
@@ -206,6 +210,13 @@ public class UserInterface
     {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println();
+        System.out.println("-".repeat(65));
+        System.out.println();
+        System.out.println("                        ➖Remove Vehicle");
+        System.out.println();
+        System.out.println("-".repeat(65));
+        System.out.println();
         System.out.println("Enter the one or two digit ID number of the vehicle you want to remove: ");
         int twoDigitIdNumber = scanner.nextInt();
         scanner.nextLine();
@@ -225,7 +236,8 @@ public class UserInterface
             try {
                 dealershipFileManager.saveDealership(dealership);
 
-                System.out.println("Car removed successfully!");
+                System.out.println();
+                System.out.println("Car removed successfully! ✨");
             } catch (Exception ex) {
                 System.out.println("An error occurred while removing the vehicle from the CSV file.");
                 ex.printStackTrace();
@@ -233,6 +245,40 @@ public class UserInterface
         } else {
             System.out.println("Vehicle with the specified ID was not found.");
         }
+
+        // prompt user to make their next move with the following options
+        System.out.println();
+        System.out.println("What do you want to do next " + userName + "?");
+        System.out.println();
+        System.out.println("A - Remove another Vehicle");
+        System.out.println("B - Return to Menu Screen");
+        System.out.println("C - Exit the Application");
+        System.out.println();
+        System.out.println("Enter your choice below: ");
+        System.out.println();
+        //Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+
+        // process the users choice
+        switch (choice.toUpperCase())
+        {
+            case "A":
+                processRemoveVehicleRequest();
+                break;
+            case "B":
+                display();
+                break;
+            case "C":
+                System.out.println();
+                System.out.println("Goodbye for now " + userName + "!");
+                System.out.println("👋");
+                System.exit(1);
+            default:
+                System.out.println();
+                System.out.println("An error has occurred while retrieving selection. ");
+                break;
+        }
+
     }
 
     private void init()
