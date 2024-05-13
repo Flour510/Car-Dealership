@@ -27,6 +27,10 @@ public class UserInterface
 
     public static void personalize()
     {
+        // let the user know what type of app they are about to use
+        System.out.println();
+        System.out.println("Car dealership loading... ");
+
         // prompt the user for their first name for a more personalized experience
         System.out.println();
         System.out.println("Enter your first name: ");
